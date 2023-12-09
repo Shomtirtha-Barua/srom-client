@@ -30,6 +30,7 @@ const AddJobs = () => {
       wage: data.wage,
       category: data.category,
       status: data.status,
+      location: data.location,
     };
 
     // send data to the server
@@ -127,16 +128,6 @@ const AddJobs = () => {
                   {service?.name}
                 </option>
               ))}
-              {/* <option value="plumbing">Plumbing</option>
-              <option value="electrical">Electrical</option>
-              <option value="carpentry">Carpentry</option>
-              <option value="painting">Painting</option>
-              <option value="computer-repair">Computer Repair</option>
-              <option value="smartphone-repair">Smartphone Repair</option>
-              <option value="car-washing">Car Washing</option>
-              <option value="house-cleaning">House Cleaning</option>
-              <option value="office-cleaning">Office Cleaning</option>
-              <option value="carpet-cleaning">Carpet Cleaning</option> */}
             </select>
             {errors.category && (
               <span className="label-text-alt text-red-500 mt-2">
@@ -175,6 +166,22 @@ const AddJobs = () => {
               </span>
             )}
           </div>
+
+          <div className="mt-4">
+            <label htmlFor="location" className="block text-sm text-gray-800 ">
+              Location
+            </label>
+            <input
+              type="text"
+              className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border rounded-lg    focus:border-blue-400 dark:focus:border-blue-300 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40"
+              {...register("location", { required: true })}
+            />
+          </div>
+          {errors.location && (
+            <span className="label-text-alt text-red-500 mt-2">
+              Location is required
+            </span>
+          )}
 
           <div className="mt-4">
             <label

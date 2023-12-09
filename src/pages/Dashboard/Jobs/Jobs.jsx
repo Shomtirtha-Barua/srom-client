@@ -16,13 +16,14 @@ const Jobs = () => {
     isLoading,
     refetch,
   } = useQuery(
-    "products",
+    "jobs",
     () => fetch("http://localhost:5000/api/v1/job").then((res) => res.json()),
     {
       refetchInterval: 60000, // Refetch every 60 seconds
     }
   );
 
+  // is loading
   if (isLoading) {
     return <Loader />;
   }
@@ -71,6 +72,7 @@ const Jobs = () => {
               <th>Job Title</th>
               <th>Wage</th>
               <th>Category</th>
+              <th>Location</th>
               <th>Status</th>
               <th>Worker Name</th>
               <th>Worker Email</th>
@@ -85,6 +87,7 @@ const Jobs = () => {
                 <td>{job?.title}</td>
                 <td>{job?.wage}$</td>
                 <td>{job?.category}</td>
+                <td>{job?.location}</td>
                 <td>{job?.status}</td>
                 <td>{job?.worker?.username}</td>
                 <td>{job?.worker?.email}</td>

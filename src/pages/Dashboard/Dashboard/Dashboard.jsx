@@ -1,3 +1,4 @@
+import moment from "moment/moment";
 import { useQuery } from "react-query";
 
 const Dashboard = () => {
@@ -23,7 +24,10 @@ const Dashboard = () => {
   return (
     <div>
       <div>
-        <h1 className="text-2xl text-sky-600">Welcome to Dashboard</h1>
+        <h1 className="text-3xl text-sky-600">Welcome to Dashboard</h1>
+        <p className="text-lg font-semibold mt-2 text-fuchsia-500">
+          {moment().format("MMMM Do YYYY, h:mm a")}
+        </p>
       </div>
       <div className="grid grid-cols-1 gap-4 px-4 mt-8 sm:grid-cols-4 sm:px-8">
         <div className="flex items-center bg-white border rounded-sm overflow-hidden shadow">
