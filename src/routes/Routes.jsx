@@ -1,19 +1,27 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../layouts/DashboardLayout";
 import MainLayout from "../layouts/MainLayout";
+import Carts from "../pages/Carts/Carts";
+import CustomerMessages from "../pages/CustomerMessages/CustomerMessages";
 import Dashboard from "../pages/Dashboard/Dashboard/Dashboard";
-import Service from "../pages/Dashboard/Service/Service";
-import DisplayError from "../pages/DisplayError/DisplayError";
-import Home from "../pages/Home/Home/Home";
-import Login from "../pages/Login/Login/Login";
-import ResetPassword from "../pages/Login/ResetPassword/ResetPassword";
-import Register from "../pages/Login/Resigter/Register";
-import Profile from "../pages/Profile/Profile";
-import PrivateRoute from "./PrivateRoute";
 import DashboardProfile from "../pages/Dashboard/DashboardProfile/DashboardProfile";
 import Jobs from "../pages/Dashboard/Jobs/Jobs";
 import Messages from "../pages/Dashboard/Messages/Messages";
-import Message from "../pages/Home/Message/Message";
+import Orders from "../pages/Dashboard/Orders/Orders";
+import RequestedJobs from "../pages/Dashboard/RequestedJobs/RequestedJobs";
+import Service from "../pages/Dashboard/Service/Service";
+import TotalExpense from "../pages/Dashboard/TotalExpense/TotalExpense";
+import DisplayError from "../pages/DisplayError/DisplayError";
+import Home from "../pages/Home/Home/Home";
+import AllJobs from "../pages/Jobs/AllJobs/AllJobs";
+import JobDetail from "../pages/Jobs/JobDetail/JobDetail";
+import SendJobRequest from "../pages/Jobs/SendJobRequest/SendJobRequest";
+import Login from "../pages/Login/Login/Login";
+import ResetPassword from "../pages/Login/ResetPassword/ResetPassword";
+import Register from "../pages/Login/Resigter/Register";
+import MyOrders from "../pages/MyOrders/MyOrders";
+import Profile from "../pages/Profile/Profile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -41,11 +49,37 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <Profile></Profile>,
       },
+      {
+        path: "/all-jobs",
+        element: <AllJobs></AllJobs>,
+      },
+      {
+        path: "/send-job-request",
+        element: (
+          <PrivateRoute>
+            <SendJobRequest></SendJobRequest>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/job/:id",
+        element: <JobDetail></JobDetail>,
+      },
+
+      {
+        path: "/carts",
+        element: <Carts></Carts>,
+      },
+      {
+        path: "/my-orders",
+        element: <MyOrders></MyOrders>,
+      },
     ],
   },
+
   {
-    path: "/message",
-    element: <Message></Message>,
+    path: "/messages",
+    element: <CustomerMessages></CustomerMessages>,
   },
 
   {
@@ -76,6 +110,18 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/messages",
         element: <Messages></Messages>,
+      },
+      {
+        path: "/dashboard/requested-job",
+        element: <RequestedJobs></RequestedJobs>,
+      },
+      {
+        path: "/dashboard/orders",
+        element: <Orders></Orders>,
+      },
+      {
+        path: "/dashboard/total-expense",
+        element: <TotalExpense></TotalExpense>,
       },
     ],
   },

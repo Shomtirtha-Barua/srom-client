@@ -1,5 +1,6 @@
 import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { FaHouse } from "react-icons/fa6";
 import { Link, Outlet } from "react-router-dom";
 import { auth } from "../config/firebase.init";
 import useAdmin from "../hooks/useAdmin";
@@ -16,9 +17,9 @@ const DashboardLayout = () => {
       <div className="drawer-content p-8">
         <label
           htmlFor="dashboard-drawer"
-          className="btn btn-primary drawer-button lg:hidden"
+          className="btn btn-primary drawer-button lg:hidden print:hidden"
         >
-          Open drawer
+          =
         </label>
         {/* Page content here */}
         <Outlet />
@@ -30,6 +31,9 @@ const DashboardLayout = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu p-4 w-60 min-h-full bg-sky-100 text-base-content space-y-1 text-base font-medium">
+          <Link to="/" className="text-2xl ml-4 text-sky-600 w-8 h-8 p-1">
+            <FaHouse />
+          </Link>
           {/* Sidebar content here */}
           <li>
             <Link to="/dashboard">Dashboard</Link>
@@ -38,6 +42,15 @@ const DashboardLayout = () => {
             <>
               <li>
                 <Link to="service">Services</Link>
+              </li>
+              <li>
+                <Link to="requested-job">Requested Job</Link>
+              </li>
+              <li>
+                <Link to="orders">Orders</Link>
+              </li>
+              <li>
+                <Link to="total-expense">Total Expanses</Link>
               </li>
             </>
           )}
@@ -51,6 +64,9 @@ const DashboardLayout = () => {
               </li>
               <li>
                 <Link to="messages">Message</Link>
+              </li>
+              <li>
+                <Link to="orders">Orders</Link>
               </li>
             </>
           )}

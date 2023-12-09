@@ -2,10 +2,14 @@ import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
 import { auth } from "../../../config/firebase.init";
+import useAdmin from "../../../hooks/useAdmin";
+import useWorker from "../../../hooks/useWorker";
 
 const Navbar = () => {
   // get user info from firebase
   const [user] = useAuthState(auth);
+  const [admin] = useAdmin(user);
+  const [worker] = useWorker(user);
 
   const menus = (
     <>
@@ -13,14 +17,26 @@ const Navbar = () => {
         <Link to="/">Home</Link>
       </li>
       <li>
-        <Link>All Services</Link>
+        <Link to="/all-jobs">All Job</Link>
       </li>
-      <li>
-        <Link>About</Link>
-      </li>
-      <li>
-        <Link to="/message">Messages</Link>
-      </li>
+
+      {!user ||
+        (!admin && !worker && (
+          <>
+            <li>
+              <Link to="/messages">Messages</Link>
+            </li>
+            <li>
+              <Link to="/send-job-request">Send Job Request</Link>
+            </li>
+            <li>
+              <Link to="/my-orders">My Orders</Link>
+            </li>
+            <li>
+              <Link to="/carts">My Cart</Link>
+            </li>
+          </>
+        ))}
     </>
   );
 

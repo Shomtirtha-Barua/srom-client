@@ -11,9 +11,7 @@ const CardItems = ({ service }) => {
               <h1 className="mt-2 text-xl font-medium">{service?.name}</h1>
               <p className="mt-1">
                 Discount:{" "}
-                {service?.discounts === 0
-                  ? "No Discount"
-                  : `${service?.discounts}%`}
+                {service?.discounts}%
               </p>
             </div>
             <div className="mt-3">
